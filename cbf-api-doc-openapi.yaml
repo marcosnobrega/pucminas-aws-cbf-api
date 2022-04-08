@@ -1,0 +1,911 @@
+openapi: 3.0.1
+info:
+  title: OpenAPI definition
+  version: v0
+servers:
+  - url: http://localhost:8080
+    description: Generated server url
+tags:
+  - name: Transferencias
+  - name: Times
+  - name: Jogadores
+  - name: Torneios
+paths:
+  /transferencias/{id}:
+    get:
+      tags:
+        - Transferencias
+      summary: Buscar transferencia por ID
+      description: Permite recuperar os dados de uma transferencia pelo ID
+      operationId: getTransferencia
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Transferencia'
+    put:
+      tags:
+        - Transferencias
+      summary: Atualizar transferencia
+      description: Permite atualizar os dados de uma transferencia existente
+      operationId: atualizar
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TransferenciaDTO'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Transferencia'
+    delete:
+      tags:
+        - Transferencias
+      summary: Deletar transferencia
+      description: Permite deletar uma transferencia existente
+      operationId: deletar
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+  /torneios/{torneioId}/partidas/{partidaId}:
+    put:
+      tags:
+        - Torneios
+      summary: Atualizar partida no torneio
+      description: Permite atualizar uma partida existente em um torneio
+      operationId: atualizarPartidaNoTorneio
+      parameters:
+        - name: torneioId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: partidaId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PartidaDTO'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Partida'
+    delete:
+      tags:
+        - Torneios
+      summary: Deletar partida do torneio
+      description: Permite deletar uma partida existente em um torneio
+      operationId: deletarPartidaDoTorneio
+      parameters:
+        - name: torneioId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: partidaId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+  /torneios/{id}:
+    get:
+      tags:
+        - Torneios
+      summary: Buscar torneio por ID
+      description: Permite recuperar os dados de um torneio
+      operationId: getTorneio
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Torneio'
+    put:
+      tags:
+        - Torneios
+      summary: Atualizar torneio
+      description: Permite atualizar os dados de um torneio existente
+      operationId: atualizar_1
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TorneioDTO'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Torneio'
+    delete:
+      tags:
+        - Torneios
+      summary: Remover torneio
+      description: Permite deletar um torneio existente
+      operationId: deletar_1
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+  /times/{id}:
+    get:
+      tags:
+        - Times
+      summary: Buscar time por ID
+      description: Permite recuperar os dados de um time pelo ID
+      operationId: getTime
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Time'
+    put:
+      tags:
+        - Times
+      summary: Atualizar time
+      description: Permite atualizar os dados de um time existente
+      operationId: atualizar_2
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TimeDTO'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Time'
+    delete:
+      tags:
+        - Times
+      summary: Deletar time
+      description: Permite deletar um time existente
+      operationId: deletar_2
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+  /jogadores/{id}:
+    get:
+      tags:
+        - Jogadores
+      summary: Buscar jogador por ID
+      description: Permite recuperar os dados de um jogador pelo ID
+      operationId: getJogador
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Jogador'
+    put:
+      tags:
+        - Jogadores
+      summary: Atualizar jogador
+      description: Permite atualizar os dados de um jogador existente
+      operationId: atualizar_3
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/JogadorDTO'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Jogador'
+    delete:
+      tags:
+        - Jogadores
+      summary: Deletar jogador
+      description: Permite deletar um jogador existente
+      operationId: deletar_3
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+  /transferencias:
+    get:
+      tags:
+        - Transferencias
+      summary: Listar transferencias
+      description: Permite listar as transferencias realizadas
+      operationId: listar
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Transferencia'
+    post:
+      tags:
+        - Transferencias
+      summary: Realizar transferencia
+      description: Permite realizar a transferencia de um jogador para outro time
+      operationId: criar
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TransferenciaDTO'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Transferencia'
+  /torneios:
+    get:
+      tags:
+        - Torneios
+      summary: Listar torneios
+      description: Permite listar os torneios cadastrados
+      operationId: listar_1
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Torneio'
+    post:
+      tags:
+        - Torneios
+      summary: Cadastrar torneio
+      description: Permite cadastrar um novo torneio
+      operationId: criar_1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TorneioDTO'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Torneio'
+  /torneios/{torneioId}/partidas/{partidaId}/eventos/substituicao:
+    post:
+      tags:
+        - Torneios
+      summary: Registrar substituicao na partida
+      description: Permite registrar o evento de substituicao em uma partida em um torneio
+      operationId: substituicaoPartida
+      parameters:
+        - name: torneioId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: partidaId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+  /torneios/{torneioId}/partidas/{partidaId}/eventos/intervalo:
+    post:
+      tags:
+        - Torneios
+      summary: Registrar intervalo da partida
+      description: Permite registrar o evento de intervalo de uma partida em um torneio
+      operationId: intervaloDaPartida
+      parameters:
+        - name: torneioId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: partidaId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+  /torneios/{torneioId}/partidas/{partidaId}/eventos/inicio:
+    post:
+      tags:
+        - Torneios
+      summary: Registrar inicio da partida
+      description: Permite registrar o evento de inicio de uma partida em um torneio
+      operationId: iniciarPartida
+      parameters:
+        - name: torneioId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: partidaId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+  /torneios/{torneioId}/partidas/{partidaId}/eventos/gol:
+    post:
+      tags:
+        - Torneios
+      summary: Registrar gol na partida
+      description: Permite registrar o evento de gol em uma partida em um torneio
+      operationId: marcarGol
+      parameters:
+        - name: torneioId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: partidaId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+  /torneios/{torneioId}/partidas/{partidaId}/eventos/fim:
+    post:
+      tags:
+        - Torneios
+      summary: Registrar fim da partida
+      description: Permite registrar o evento de fim de uma partida em um torneio
+      operationId: finalizarPartida
+      parameters:
+        - name: torneioId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: partidaId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+  /torneios/{torneioId}/partidas/{partidaId}/eventos/advertencia:
+    post:
+      tags:
+        - Torneios
+      summary: Registrar advertencia na partida
+      description: Permite registrar o evento de advertencia em uma partida em um torneio
+      operationId: advertenciaPartida
+      parameters:
+        - name: torneioId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: partidaId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+  /torneios/{torneioId}/partidas/{partidaId}/eventos/acrescimo:
+    post:
+      tags:
+        - Torneios
+      summary: Registrar acrescimo na partida
+      description: Permite registrar o evento de acrescimo em uma partida em um torneio
+      operationId: acrescimoPartida
+      parameters:
+        - name: torneioId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: partidaId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+  /torneios/{id}/times:
+    post:
+      tags:
+        - Torneios
+      summary: Adicionar time no torneio
+      description: Permite adicionar um dos times cadastrados em um torneio
+      operationId: adicionarTimeNoTorneio
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TorneioTimeDTO'
+        required: true
+      responses:
+        '200':
+          description: OK
+  /torneios/{id}/partidas:
+    get:
+      tags:
+        - Torneios
+      summary: Listar partidas do torneio
+      description: Permite listar as partidas cadastradas em um torneio
+      operationId: listarPartidasDoTorneio
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Partida'
+    post:
+      tags:
+        - Torneios
+      summary: Adicionar partida no torneio
+      description: Permite adicionar uma partida em um torneio
+      operationId: adicionarPartidaNoTorneio
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PartidaDTO'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Partida'
+  /times:
+    get:
+      tags:
+        - Times
+      summary: Listar times
+      description: Permite listar os times cadastrados
+      operationId: listar_2
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Time'
+    post:
+      tags:
+        - Times
+      summary: Cadastrar time
+      description: Permite cadastrar um novo time
+      operationId: criar_2
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TimeDTO'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Time'
+  /jogadores:
+    get:
+      tags:
+        - Jogadores
+      summary: Listar jogadores
+      description: Permite listar os jogadores cadastrados
+      operationId: listar_3
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Jogador'
+    post:
+      tags:
+        - Jogadores
+      summary: Cadastrar jogador
+      description: Permite cadastrar um novo jogador
+      operationId: criar_3
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/JogadorDTO'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Jogador'
+  /torneios/{torneioId}/partidas/{partidaId}/eventos:
+    get:
+      tags:
+        - Torneios
+      summary: Listar eventos da partida
+      description: Permite listar os eventos de uma partida em um torneio
+      operationId: listarEventos
+      parameters:
+        - name: torneioId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: partidaId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Evento'
+  /torneios/{torneioId}/times/{timeId}:
+    delete:
+      tags:
+        - Torneios
+      summary: Remover time do torneio
+      description: Permite remover um dos times do torneio
+      operationId: removerTimeNoTorneio
+      parameters:
+        - name: torneioId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: timeId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+components:
+  schemas:
+    TransferenciaDTO:
+      required:
+        - data
+        - idJogador
+        - idTimeDeDestino
+        - valor
+      type: object
+      properties:
+        idTimeDeDestino:
+          type: integer
+          format: int64
+        data:
+          type: string
+          format: date
+        valor:
+          type: number
+          format: double
+        idJogador:
+          type: integer
+          format: int64
+    Jogador:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        nome:
+          type: string
+        dataDeNascimento:
+          type: string
+          format: date
+        pais:
+          type: string
+        time:
+          $ref: '#/components/schemas/Time'
+    Time:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        nome:
+          type: string
+        localidade:
+          type: string
+    Transferencia:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        timeDeOrigem:
+          $ref: '#/components/schemas/Time'
+        timeDeDestino:
+          $ref: '#/components/schemas/Time'
+        data:
+          type: string
+          format: date
+        valor:
+          type: number
+          format: double
+        jogador:
+          $ref: '#/components/schemas/Jogador'
+    PartidaDTO:
+      required:
+        - data
+        - idTime1
+        - idTime2
+      type: object
+      properties:
+        data:
+          type: string
+          format: date-time
+        idTime1:
+          type: integer
+          format: int64
+        idTime2:
+          type: integer
+          format: int64
+    Partida:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        data:
+          type: string
+          format: date-time
+        time1:
+          $ref: '#/components/schemas/Time'
+        time2:
+          $ref: '#/components/schemas/Time'
+        torneio:
+          $ref: '#/components/schemas/Torneio'
+    Torneio:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        nome:
+          type: string
+        times:
+          type: array
+          items:
+            $ref: '#/components/schemas/Time'
+    TorneioDTO:
+      required:
+        - nome
+      type: object
+      properties:
+        nome:
+          type: string
+    TimeDTO:
+      required:
+        - localidade
+        - nome
+      type: object
+      properties:
+        nome:
+          type: string
+        localidade:
+          type: string
+    JogadorDTO:
+      required:
+        - dataDeNascimento
+        - idTime
+        - nome
+        - pais
+      type: object
+      properties:
+        nome:
+          type: string
+        dataDeNascimento:
+          type: string
+          format: date
+        pais:
+          type: string
+        idTime:
+          type: integer
+          format: int64
+    TorneioTimeDTO:
+      required:
+        - timeId
+      type: object
+      properties:
+        timeId:
+          type: integer
+          format: int64
+    Evento:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        tipo:
+          type: string
+        descricao:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        partida:
+          $ref: '#/components/schemas/Partida'
