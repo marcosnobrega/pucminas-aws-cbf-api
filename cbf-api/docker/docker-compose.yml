@@ -10,4 +10,10 @@ services:
       - 8080:8080
     depends_on:
       - mysql
+      - rabbitmq
     restart: on-failure
+  rabbitmq:
+    image: rabbitmq:management
+    ports:
+      - 15672:15672
+    hostname: my-rabbit
