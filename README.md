@@ -71,3 +71,11 @@ Para parar a aplicação, execute o comando abaixo:
 ### Documentação da API no padrão OpenAPI
 
 O arquivo da documentação da API está localizado no arquivo cbf-api-doc-openapi.yaml na raiz do repositório.
+
+### Videos de apresentação
+
+* [Vídeo parte 1](https://github.com/marcosnobrega/pucminas-aws-cbf-api/blob/main/videos-demonstracao/demo-parte-1.mp4)
+* [Vídeo parte 2](https://github.com/marcosnobrega/pucminas-aws-cbf-api/blob/main/videos-demonstracao/demo-parte-2.mp4)
+* [Vídeo parte 3](https://github.com/marcosnobrega/pucminas-aws-cbf-api/blob/main/videos-demonstracao/demo-parte-3.mp4)
+* [Vídeo parte 4](https://github.com/marcosnobrega/pucminas-aws-cbf-api/blob/main/videos-demonstracao/demo-parte-4.mp4)
+* [Vídeo parte 5](https://github.com/marcosnobrega/pucminas-aws-cbf-api/blob/main/videos-demonstracao/demo-parte-5.mp4)
