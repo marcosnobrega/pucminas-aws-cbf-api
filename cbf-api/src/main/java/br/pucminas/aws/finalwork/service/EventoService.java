@@ -1,11 +1,13 @@
 package br.pucminas.aws.finalwork.service;
 
+import br.pucminas.aws.finalwork.FinalworkApplication;
 import br.pucminas.aws.finalwork.domain.Evento;
 import br.pucminas.aws.finalwork.domain.Partida;
 import br.pucminas.aws.finalwork.domain.Torneio;
 import br.pucminas.aws.finalwork.enums.TipoEventoEnum;
 import br.pucminas.aws.finalwork.repository.EventoRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,6 +26,9 @@ public class EventoService {
     @Autowired
     private final TorneioService torneioService;
 
+    @Autowired
+    private final RabbitTemplate rabbitTemplate;
+
     private Evento prepararEvento(TipoEventoEnum tipo, Partida partida) {
         Evento evento = new Evento();
         evento.setTipo(tipo.getTipo());
@@ -37,6 +42,10 @@ public class EventoService {
         Torneio torneio = this.torneioService.getTorneio(torneioId);
         Partida partida = this.partidaService.getPartidaPorIdETorneioId(partidaId, torneio.getId());
         Evento evento = this.prepararEvento(tipo, partida);
+        this.rabbitTemplate.convertAndSend(
+                FinalworkApplication.topicExchangeName,
+                FinalworkApplication.queueMessagePrefix + evento.getTipo(),
+                evento.getDescricao());
         return this.repository.save(evento);
     }
 
